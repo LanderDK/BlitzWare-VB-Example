@@ -28,7 +28,7 @@ Namespace BlitzWare
                     If Not BlitzWareAuth.Login(username, password, twoFactorCode) Then
                         Environment.Exit(0)
                     End If
-                    BlitzWareAuth.Log(username, "User logged in")
+                    BlitzWareAuth.Log("User logged in")
                 Case 2
                     Console.Write(vbCrLf & vbLf & "Enter username: ")
                     username = Console.ReadLine()
@@ -41,7 +41,7 @@ Namespace BlitzWare
                     If Not BlitzWareAuth.Register(username, password, email, key) Then
                         Environment.Exit(0)
                     End If
-                    BlitzWareAuth.Log(username, "User registered")
+                    BlitzWareAuth.Log("User registered")
                 Case 3
                     Console.Write(vbCrLf & vbLf & "Enter username: ")
                     username = Console.ReadLine()
@@ -52,14 +52,14 @@ Namespace BlitzWare
                     If Not BlitzWareAuth.Extend(username, password, key) Then
                         Environment.Exit(0)
                     End If
-                    BlitzWareAuth.Log(username, "User extended")
+                    BlitzWareAuth.Log("User extended")
                 Case 4
                     Console.Write(vbCrLf & vbLf & "Enter license: ")
                     key = Console.ReadLine()
                     If Not BlitzWareAuth.LoginLicenseOnly(key) Then
                         Environment.Exit(0)
                     End If
-                    BlitzWareAuth.Log(key, "User login with license")
+                    BlitzWareAuth.Log("User login with license")
                 Case Else
                     Console.WriteLine(vbCrLf & vbLf & "Invalid Selection")
                     Thread.Sleep(3000)

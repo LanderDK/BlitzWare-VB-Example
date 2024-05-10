@@ -215,7 +215,7 @@ Namespace BlitzWare
                 client.DefaultRequestHeaders.Accept.Add(New MediaTypeWithQualityHeaderValue("application/json"))
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json")
 
-                Dim jsonData As String = $"{{""username"":""{username}"",""password"":""{password}"",""email"":""{email}"",""license"":""{license}"",""hwid"":""{Utilities.HWID()}"",""lastIP"":""{Utilities.IP()}"",""id"":""{appData.Id}""}}"
+                Dim jsonData As String = $"{{""username"":""{username}"",""password"":""{password}"",""email"":""{email}"",""license"":""{license}"",""hwid"":""{Utilities.HWID()}"",""lastIP"":""{Utilities.IP()}"",""applicationId"":""{appData.Id}""}}"
                 Dim content As New StringContent(jsonData, Encoding.UTF8, "application/json")
                 Dim response As HttpResponseMessage = client.PostAsync(url, content).Result
 
@@ -262,7 +262,7 @@ Namespace BlitzWare
                 client.DefaultRequestHeaders.Accept.Add(New MediaTypeWithQualityHeaderValue("application/json"))
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json")
 
-                Dim jsonData As String = $"{{""username"":""{username}"",""password"":""{password}"",""twoFactorCode"":""{twoFactorCode}"",""hwid"":""{Utilities.HWID()}"",""lastIP"":""{Utilities.IP()}"",""appId"":""{appData.Id}""}}"
+                Dim jsonData As String = $"{{""username"":""{username}"",""password"":""{password}"",""twoFactorCode"":""{twoFactorCode}"",""hwid"":""{Utilities.HWID()}"",""lastIP"":""{Utilities.IP()}"",""applicationId"":""{appData.Id}""}}"
                 Dim content As New StringContent(jsonData, Encoding.UTF8, "application/json")
                 Dim response As HttpResponseMessage = client.PostAsync(url, content).Result
 
@@ -309,7 +309,7 @@ Namespace BlitzWare
                 client.DefaultRequestHeaders.Accept.Add(New MediaTypeWithQualityHeaderValue("application/json"))
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json")
 
-                Dim jsonData As String = $"{{""license"":""{license}"",""hwid"":""{Utilities.HWID()}"",""lastIP"":""{Utilities.IP()}"",""appId"":""{appData.Id}""}}"
+                Dim jsonData As String = $"{{""license"":""{license}"",""hwid"":""{Utilities.HWID()}"",""lastIP"":""{Utilities.IP()}"",""applicationId"":""{appData.Id}""}}"
                 Dim content As New StringContent(jsonData, Encoding.UTF8, "application/json")
                 Dim response As HttpResponseMessage = client.PostAsync(url, content).Result
 
@@ -356,7 +356,7 @@ Namespace BlitzWare
                 client.DefaultRequestHeaders.Accept.Add(New MediaTypeWithQualityHeaderValue("application/json"))
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json")
 
-                Dim jsonData As String = $"{{""username"":""{username}"",""password"":""{password}"",""license"":""{license}"",""hwid"":""{Utilities.HWID()}"",""appId"":""{appData.Id}""}}"
+                Dim jsonData As String = $"{{""username"":""{username}"",""password"":""{password}"",""license"":""{license}"",""hwid"":""{Utilities.HWID()}"",""applicationId"":""{appData.Id}""}}"
                 Dim content As New StringContent(jsonData, Encoding.UTF8, "application/json")
                 Dim response As HttpResponseMessage = client.PutAsync(url, content).Result
 
@@ -389,7 +389,7 @@ Namespace BlitzWare
             End Try
         End Function
 
-        Public Sub Log(username As String, action As String)
+        Public Sub Log(action As String)
             If Not Initialized Then
                 Console.WriteLine("Please initialize your application first!")
                 Return
@@ -403,7 +403,7 @@ Namespace BlitzWare
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json")
                 client.DefaultRequestHeaders.Authorization = New AuthenticationHeaderValue("Bearer", uData.Token)
 
-                Dim jsonData As String = $"{{""username"":""{username}"",""action"":""{action}"",""ip"":""{Utilities.IP()}"",""appId"":""{appData.Id}""}}"
+                Dim jsonData As String = $"{{""action"":""{action}"",""ip"":""{Utilities.IP()}"",""applicationId"":""{appData.Id}"",""userId"":""{uData.Id}""}}"
                 Dim content As New StringContent(jsonData, Encoding.UTF8, "application/json")
                 Dim response As HttpResponseMessage = client.PostAsync(url, content).Result
 
